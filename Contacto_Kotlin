@@ -21,7 +21,10 @@ class contact_code : AppCompatActivity() {
         tel=findViewById(R.id.numTel)
         CE=findViewById(R.id.correoElectronico)
         val copy1:Button=findViewById(R.id.copyTel)
+        copy1.setBackgroundColor(Color.parseColor("#0000ff"))
         val copy2:Button=findViewById(R.id.copyCE)
+        copy2.setBackgroundColor(Color.parseColor("#0000ff"))
+
         //------
         copy1.setOnClickListener {
             val textToCopy = tel?.text.toString()
