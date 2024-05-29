@@ -1,0 +1,43 @@
+package com.example.tapapp
+
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class contact_code : AppCompatActivity() {
+    var tel: TextView?=null
+    var CE: TextView?=null
+    //------
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.contact_layout)
+
+        tel=findViewById(R.id.numTel)
+        CE=findViewById(R.id.correoElectronico)
+        val copy1:Button=findViewById(R.id.copyTel)
+        val copy2:Button=findViewById(R.id.copyCE)
+        //------
+        copy1.setOnClickListener {
+            val textToCopy = tel?.text.toString()
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", textToCopy)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Número copiado", Toast.LENGTH_LONG).show()
+        }
+        //------
+        copy2.setOnClickListener {
+            val textToCopy = CE?.text.toString()
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", textToCopy)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "Correo copiado", Toast.LENGTH_LONG).show()
+        }
+    }
+
+}
